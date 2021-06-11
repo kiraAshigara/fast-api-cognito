@@ -14,6 +14,7 @@ AWS_SECRET_KEY={aws_secret_manager_path}
 
 ```
 {
+  "LOG_LEVEL": 10,
   "COGNITO_CLIENT_ID": "",
   "COGNITO_POOL_ID": ""
 }
