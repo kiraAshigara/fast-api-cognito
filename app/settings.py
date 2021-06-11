@@ -1,7 +1,6 @@
 import os
 import json
 import boto3
-import logging
 
 AWS_SECRET_KEY = os.environ['AWS_SECRET_KEY']
 
@@ -23,6 +22,4 @@ def get_config():
         raise ex
 
 
-logging.basicConfig(level=10)
-logger = logging.getLogger(__name__)
 config = get_config()
