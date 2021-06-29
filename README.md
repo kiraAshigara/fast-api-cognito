@@ -2,7 +2,7 @@
 
 #### Run server:
 
-``uvicorn app.main:app --reload``
+``uvicorn app.main:api --reload``
 
 #### Environment variables:
 

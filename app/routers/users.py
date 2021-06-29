@@ -4,7 +4,6 @@ from app.services.auth import Protected
 from app.models.users import NewUser, Authenticate, Tokens, Me, RefreshToken
 from app.models.messages import MessageNewUserCreated, MessageLogout
 from app.services import users
-from app.const.exception import NotAuthorizedException
 
 router = APIRouter()
 protected = Protected()
@@ -25,12 +24,7 @@ async def login(user: Authenticate):
         tokens = users.authenticate(user)
         return tokens
     except Exception as ex:
-        exception = ex.__class__.__name__
-
-        if exception == NotAuthorizedException:
-            raise HTTPException(status_code=400, detail=str(ex))
-        else:
-            raise HTTPException(status_code=500, detail=str(ex))
+        raise HTTPException(status_code=403, detail=str(ex))
 
 
 @router.get('/logout', status_code=200, dependencies=[Depends(protected)], response_model=MessageLogout)
